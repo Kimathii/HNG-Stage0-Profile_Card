@@ -28,6 +28,11 @@ body {
     align-items: flex-start; 
     max-width: 800px;
     gap: 2rem;
+
+    .card {
+    width: 90%;
+    margin: auto;
+  }
   }
 
   .avatar {
@@ -155,3 +160,13 @@ body {
 .dropdown-content.show {
   display: block;
 }
+
+.about, .hobbies, .section {
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.card, .about {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
