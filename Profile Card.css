@@ -5,7 +5,7 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  margin: 02px;
+  margin: 2px;
 }
 
 
@@ -30,12 +30,19 @@ body {
     align-items: flex-start; 
     max-width: 800px;
     gap: 2rem;
-
-    .card {
+  }
+  
+  .card {
     width: 90%;
     margin: auto;
   }
-  }
+
+  a:focus,
+button:focus {
+  outline: 3px solid #0078ff;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
 
   .avatar {
   flex: 0 0 200px; 
@@ -49,6 +56,11 @@ body {
   border-radius: 50%; 
   padding: 4px;
   }
+
+  .avatar:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
+}
 
   .profile-info {
     flex: 1; 
@@ -110,14 +122,19 @@ body {
 }
 
 .dropbtn {
-  background-color:grey;
+  background-color: black;
   color: white;
   padding: 10px 18px;
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  font-weight: 600;
+  font-weight: 6;
 }
+
+.dropdown:focus-within .dropdown-content {
+  display: block;
+}
+
 
 .dropbtn:hover {
   background-color: grey;
@@ -149,21 +166,10 @@ body {
   background-color: #f1f1f1;
 }
 
-/* Make links visible when hovering dropdown */
 .dropdown:hover .dropdown-content {
   display: block;
 }
 
-
-.dropbtn {
-  background-color: black;
-  color: white;
-  padding: 10px 18px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: 6;
-}
 
 .dropdown-content.show {
   display: block;
@@ -173,3 +179,43 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+/* ==================== Lists Section (Grid Layout) ==================== */
+.lists {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+  width: 100%;
+}
+
+.hobbies, .dislikes {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  background: rgb(234, 231, 231), 219, 219;
+  border-radius: 10px;
+  padding: 0.2rem;
+  border: 1px solid #ccc;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.hobbies:hover, .dislikes:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+}
+
+.hobbies h4, .dislikes h4 {
+  margin-bottom: 0.5rem;
+  color: #0c204f;
+  text-align: center;
+  font-size: 1.1rem;
+}
+
+.hobbies ul, .dislikes ul {
+  list-style-type: disc;
+  /* margin-left: 0.5rem; */
+  color: #333;
+  line-height: 1.4;
+  text-align: left;
+}

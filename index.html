@@ -2,19 +2,23 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Profile Card - Mathias Echioda</title>
+
+  <!-- Font Awesome for icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" href="Profile Card.css" />
 </head>
+
 <body>
   <main>
     <article class="profile-card" data-testid="test-profile-card" aria-labelledby="nameHeading">
 
+      <!-- Avatar Section -->
       <figure>
         <img
           src="profile.JPG"
-          alt="Profile Picture of Mathias Echioda"
+          alt="Profile picture of Mathias Echioda"
           data-testid="test-user-avatar"
           class="avatar"
           width="120"
@@ -22,51 +26,64 @@
         />
       </figure>
 
-      <div class = "profile-info">
-      <header>
-        <h2 id="nameHeading" data-testid="test-user-name">Mathias Echioda</h2>
-      </header>
+      <div class="profile-info">
+        <header>
+          <h2 id="nameHeading" data-testid="test-user-name">Mathias Echioda</h2>
+        </header>
 
-      <section class="about">
-        <h3 class="visually-hidden">About</h3>
-        <p data-testid="test-user-bio">
-Hey there! I’m a learning frontend developer who’s currently knee-deep in HTML, CSS, and JavaScript and honestly loving (mostly fighting) every bit of it. I spend most of my time turning random ideas into web pages that actually work, learning React along the way, and trying to make things look good. I have a habit of taking on tasks clearly bigger than me, but that’s kind of the fun part, figuring it out as I go and watching myself level up one project at a time.        </p>
-      </section>
-
-      <section class="time">
-        <p>
-        <span data-testid="test-user-time">0</span>
-        </p>
-      </section>
-
-
-      <section class="lists">
-        <section data-testid="test-user-hobbies" class="hobbies">
-          <h4>Hobbies</h4>
-          <ul>
-           FOOTBALL! I'm a massive Arsenal fan, good murder mystries; books and movies, Javascript... Did i already mention football?
-          </ul>
+        <!-- Bio Section -->
+        <section class="about">
+          <h3 class="visually-hidden">About</h3>
+          <p data-testid="test-user-bio">
+            Hey there! I’m a learning frontend developer who’s currently knee-deep in HTML, CSS, and JavaScript and honestly loving (mostly fighting) every bit of it. I spend most of my time turning random ideas into web pages that actually work, learning React along the way, and trying to make things look good. I have a habit of taking on tasks clearly bigger than me, but that’s kind of the fun part; figuring it out as I go and watching myself level up one project at a time.
+          </p>
         </section>
 
-        <section data-testid="test-user-dislikes" class="dislikes">
-          <h4>Dislikes</h4>
-          <ul>
-          Noise (when I'm not the one making it), unnecessary drama, bugs, deadlines.
-          </ul>
+        <!-- Current Time Section -->
+        <section class="time">
+          <h3 class="visually-hidden">Current Time</h3>
+          <p>
+            <span data-testid="test-user-time">0</span>
+          </p>
         </section>
-      </section>
 
-<div class="dropdown" data-testid="test-user-social-links">
-  <button class="dropbtn" data-testid="test-user-social-button">Check Me Out 😉⬇</button>
-  <div class="dropdown-content">
-    <a href="https://x.com/_Mathias_Jr_" target="_blank" rel="noopener noreferrer" data-testid="test-user-social-twitter">Twitter</a>
-    <a href="https://github.com/Kimathii" target="_blank" rel="noopener noreferrer" data-testid="test-user-social-github">GitHub</a>
-    <a href="mailto:mechioda@gmail.com" data-testid="test-user-social-email">Email</a>
-  </div>
-</div>
-</div>
-      </nav>
+        <!-- Hobbies and Dislikes -->
+        <section class="lists">
+          <section data-testid="test-user-hobbies" class="hobbies">
+            <h4>Hobbies</h4>
+            <ul>
+              <li>Football! I'm a massive Arsenal fan</li>
+              <li>Good murder mysteries; books and movies</li>
+              <li>JavaScript (sometimes for fun 😅)</li>
+            </ul>
+          </section>
 
+          <section data-testid="test-user-dislikes" class="dislikes">
+            <h4>Dislikes</h4>
+            <ul>
+              <li>Noise (when I'm not the one making it)</li>
+              <li>Unnecessary drama</li>
+              <li>Bugs 🐞 and tight deadlines</li>
+            </ul>
+          </section>
+        </section>
+
+        <!-- Social Links Section -->
+        <nav class="dropdown" data-testid="test-user-social-links" aria-label="Social Links">
+          <button class="dropbtn" data-testid="test-user-social-button">Check Me Out 😉⬇</button>
+          <div class="dropdown-content">
+            <a href="https://x.com/_Mathias_Jr_" target="_blank" rel="noopener noreferrer" data-testid="test-user-social-twitter">
+              <i class="fa-brands fa-x-twitter"></i> Twitter
+            </a>
+            <a href="https://github.com/Kimathii" target="_blank" rel="noopener noreferrer" data-testid="test-user-social-github">
+              <i class="fa-brands fa-github"></i> GitHub
+            </a>
+            <a href="mailto:mechioda@gmail.com" data-testid="test-user-social-email">
+              <i class="fa-solid fa-envelope"></i> Email
+            </a>
+          </div>
+        </nav>
+      </div>
     </article>
   </main>
 
