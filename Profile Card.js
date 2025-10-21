@@ -1,88 +1,3 @@
-
-// console.log("✅ JS loaded!");
-
-
-// const timeEl = document.querySelector('[data-testid="test-user-time"]');
-
-// function updateTime() {
-//   if (timeEl) timeEl.textContent = Date.now();
-// }
-
-// updateTime();
-// setInterval(updateTime, 1000);
-
-// document.getElementById("contactForm").addEventListener("submit", function (e) {
-//   e.preventDefault();
-
-//   let valid = true;
-//   const name = document.getElementById("name");
-//   const email = document.getElementById("email");
-//   const subject = document.getElementById("subject");
-//   const message = document.getElementById("message");
-
-//   // Clear previous errors
-//   document.querySelectorAll("span[id^='error-']").forEach(el => el.textContent = "");
-
-//   // Name validation
-//   if (!name.value.trim()) {
-//     document.getElementById("error-name").textContent = "Name is required";
-//     valid = false;
-//   }
-
-//   // Email validation
-//   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-//   if (!emailRegex.test(email.value)) {
-//     document.getElementById("error-email").textContent = "Enter a valid email";
-//     valid = false;
-//   }
-
-//   // Subject
-//   if (!subject.value.trim()) {
-//     document.getElementById("error-subject").textContent = "Subject is required";
-//     valid = false;
-//   }
-
-//   // Message length
-//   if (message.value.trim().length < 10) {
-//     document.getElementById("error-message").textContent = "Message must be at least 10 characters";
-//     valid = false;
-//   }
-
-//   // If all good, show success
-//   if (valid) {
-//     document.getElementById("success").hidden = false;
-//     this.reset();
-//   }
-// });
-
-// // --- Toggle dropdown menu ---
-// const menuBtn = document.querySelector(".dropbtn");
-// const menuContent = document.querySelector(".dropdown-content");
-
-// if (menuBtn && menuContent) {
-//   menuBtn.addEventListener("click", (e) => {
-//     e.stopPropagation();
-//     menuContent.classList.toggle("show");
-//   });
-
-//   // Close when clicking outside
-//   window.addEventListener("click", (e) => {
-//     if (!menuBtn.contains(e.target) && !menuContent.contains(e.target)) {
-//       menuContent.classList.remove("show");
-//     }
-//   });
-
-//   // Close on Escape key
-//   window.addEventListener("keydown", (e) => {
-//     if (e.key === "Escape") {
-//       menuContent.classList.remove("show");
-//       menuBtn.focus();
-//     }
-//   });
-// }
-
-
-
 console.log("✅ JS loaded!");
 
 // --- TIME DISPLAY ---
@@ -163,3 +78,5 @@ if (contactForm) {
     }
   });
 }
+
+// 

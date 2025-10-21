@@ -19,24 +19,29 @@
 
 <div class="profile-card">
 
+
 <form id="contactForm" novalidate>
   <label for="name">Full Name</label>
   <input id="name" data-testid="test-contact-name" type="text" required aria-describedby="error-name" />
+  <hr class="section-divider">
 
   <span id="error-name" data-testid="test-contact-error-name"></span>
 
   <label for="email">Email</label>
-  <input id="email" data-testid="test-contact-email" type="email" required aria-describedby="error-email" />
+  <input id="email" data-testid="test-contact-email" placeholder= "Username@mail.com..." type="email" required aria-describedby="error-email" />
+  <hr class="section-divider">
 
   <span id="error-email" data-testid="test-contact-error-email"></span>
 
   <label for="subject">Subject</label>
   <input id="subject" data-testid="test-contact-subject" type="text" required aria-describedby="error-subject" />
+  <hr class="section-divider">
 
   <span id="error-subject" data-testid="test-contact-error-subject"></span>
 
   <label for="message">Message</label>
   <textarea id="message" data-testid="test-contact-message" required aria-describedby="error-message"></textarea>
+  <hr class="section-divider">
 
   <span id="error-message" data-testid="test-contact-error-message"></span>
 
