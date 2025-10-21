@@ -148,7 +148,7 @@ button:focus {
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   border-radius: 8px;
   z-index: 10;
-  top: 110%; /* show just below button */
+  top: 110%; 
   left: 50%;
   transform: translateX(-50%);
   overflow: hidden;
@@ -179,7 +179,6 @@ button:focus {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* ==================== Lists Section (Grid Layout) ==================== */
 .lists {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -218,4 +217,134 @@ button:focus {
   color: #333;
   line-height: 1.4;
   text-align: left;
+}
+
+nav {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+}
+nav a {
+  color: white;
+  text-decoration: none;
+  margin-right: 1rem;
+  font-weight: 500;
+}
+
+/* When menu is active */
+.menu.show {
+  display: flex;
+}
+
+/* Menu links */
+.menu li {
+  text-align: left;
+  padding: 8px 15px;
+}
+
+.menu a {
+  color: white;
+  text-decoration: none;
+  display: block;
+}
+
+.menu a {
+  color: white;
+  text-decoration: none;
+  padding: 5px 8px;
+  border: 2px solid transparent; 
+  border-radius: 5px;
+  display: inline-block; 
+}
+
+.menu a:hover {
+  color: lightblue;
+  border-color: lightblue;
+}
+
+.menu a:focus {
+  outline: none;
+  border-color: #ffce00; 
+}
+
+/* Navbar container */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: transparent;
+  padding: 10px 15px;
+  z-index: 1000;
+}
+
+/* Hamburger icon */
+.menu-icon {
+  font-size: 28px;
+  color: white;
+  cursor: pointer;
+}
+
+/* Dropdown menu */
+.menu {
+  position: absolute;
+  top: 45px;
+  left: 10px;
+  list-style: none;
+  background: #222;
+  border-radius: 6px;
+  padding: 10px 0;
+  margin: 0;
+  width: 160px;
+  display: none;
+  flex-direction: column;
+}
+
+/* When menu is active */
+.menu.show {
+  display: flex;
+}
+
+/* Menu items */
+.menu li {
+  padding: 1px 2px;
+}
+
+.menu li:hover {
+  background:#0c204f;
+}
+
+.menu a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.menu a:hover {
+  color: #ffce00;
+}
+/* Hides menu by default */
+.menu {
+  display: none;
+  list-style: none;
+  flex-direction: column;
+  background: #0c204f;
+  position: absolute;
+  top: 50px;
+  left: 0;
+  width: 100%;
+}
+
+/* Show menu when active */
+.menu.show {
+  display: flex;
+}
+
+.menu a {
+  color: white;
+  text-decoration: none;
+  padding: 7px;
+}
+.menu a:hover {
+  color: lightblue;
+  border: none;
 }

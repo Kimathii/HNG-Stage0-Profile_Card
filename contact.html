@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact Mathias Echioda</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="Profile Card.css" />
+</head>
+<body>
+<nav class="navbar">
+  <div class="menu-icon" onclick="toggleMenu()">☰</div>
+  <ul class="menu" id="menu">
+  <li><a href="index.html">Home</a></li>
+  <li><a href="about.html">About</a></li>
+  <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="profile-card">
+
+<form id="contactForm" novalidate>
+  <label for="name">Full Name</label>
+  <input id="name" data-testid="test-contact-name" type="text" required aria-describedby="error-name" />
+
+  <span id="error-name" data-testid="test-contact-error-name"></span>
+
+  <label for="email">Email</label>
+  <input id="email" data-testid="test-contact-email" type="email" required aria-describedby="error-email" />
+
+  <span id="error-email" data-testid="test-contact-error-email"></span>
+
+  <label for="subject">Subject</label>
+  <input id="subject" data-testid="test-contact-subject" type="text" required aria-describedby="error-subject" />
+
+  <span id="error-subject" data-testid="test-contact-error-subject"></span>
+
+  <label for="message">Message</label>
+  <textarea id="message" data-testid="test-contact-message" required aria-describedby="error-message"></textarea>
+
+  <span id="error-message" data-testid="test-contact-error-message"></span>
+
+  <button type="submit" data-testid="test-contact-submit">Submit</button>
+
+  <p id="success" data-testid="test-contact-success" hidden>Message sent successfully!</p>
+</form>
+
+</div>
+
+<script src="Profile Card.js"></script>
+
+</body>
+</html>

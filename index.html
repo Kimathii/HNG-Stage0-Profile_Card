@@ -4,13 +4,22 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Profile Card - Mathias Echioda</title>
-
-  <!-- Font Awesome for icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" href="Profile Card.css" />
 </head>
 
 <body>
+
+<!-- Navigation -->
+<nav class="navbar">
+  <div class="menu-icon" onclick="toggleMenu()">☰</div>
+  <ul class="menu" id="menu">
+  <li><a href="index.html">Home</a></li>
+  <li><a href="about.html">About</a></li>
+  <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
   <main>
     <article class="profile-card" data-testid="test-profile-card" aria-labelledby="nameHeading">
 
@@ -86,6 +95,11 @@
       </div>
     </article>
   </main>
+<script>
+  function toggleMenu() {
+    document.getElementById('menu').classList.toggle('show');
+  }
+</script>
 
   <script src="Profile Card.js"></script>
 </body>
