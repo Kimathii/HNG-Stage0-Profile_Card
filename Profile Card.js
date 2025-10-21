@@ -30,7 +30,6 @@ window.addEventListener("click", (e) => {
   }
 });
 
-
 // --- CONTACT FORM VALIDATION ---
 const contactForm = document.getElementById("contactForm");
 if (contactForm) {
@@ -75,8 +74,10 @@ if (contactForm) {
     if (valid) {
       document.getElementById("success").hidden = false;
       this.reset();
+      // Hide success message after 5 seconds
+      setTimeout(() => {
+        document.getElementById("success").hidden = true;
+      }, 5000);
     }
   });
 }
-
-// 

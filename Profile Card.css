@@ -1,358 +1,707 @@
-body {
-  font-family: "Inter", sans-serif;
-  /* font-family: "Poppins", sans-serif; */
-  background-color: #0c204f;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  margin: 2px;
+/* ===========================
+   CSS RESET & BASE STYLES
+   =========================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-h1, h2, h3, h5, h6 {
-  font-family: "Montserrat", sans-serif;
-  font-weight: 400;
-  color: black;
-  letter-spacing: 0.3px;
-  text-align: center;
-}
-
-.profile-card {
-  display: flex;
-  flex-direction: column; 
-  align-items: center;
-  justify-content: center;
-  max-width: 400px;
-  margin: 2rem auto;
-  padding: 1.5rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  background-color: rgb(229, 219, 219);
-  border: 2px solid black;
-  border-radius: 15px; 
-  padding: 1rem;
-}
-
-@media (min-width: 768px) {
-  .profile-card {
-    flex-direction: row;
-    align-items: flex-start; 
-    max-width: 800px;
-    gap: 2rem;
-  }
+:root {
+  /* Color Palette */
+  --primary-bg: #0c204f;
+  --card-bg: #f5f5f5;
+  --card-border: #e0e0e0;
+  --text-dark: #222;
+  --text-medium: #444;
+  --text-light: #666;
+  --accent-color: #0078ff;
+  --hover-color: #005fcc;
+  --error-color: #dc3545;
+  --success-color: #28a745;
   
-  .card {
-    width: 90%;
-    margin: auto;
-  }
-
-  a:focus,
-button:focus {
-  outline: 3px solid #0078ff;
-  outline-offset: 3px;
-  border-radius: 4px;
+  /* Spacing */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 3rem;
+  
+  /* Border Radius */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-full: 50%;
+  
+  /* Shadows */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.12);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.15);
+  
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
 }
 
-  .avatar {
-  flex: 0 0 200px; 
-  border: #444;
-  border-radius: 2px;
-  width: 120px;
-  height: 120px;
-  object-fit: cover;
-  margin-bottom: 1rem;
-  border: 3px solid black; 
-  border-radius: 50%; 
-  padding: 4px;
-  }
-
-  .avatar:hover {
-  transform: scale(1.05);
-  transition: transform 0.3s ease;
-}
-
-  .profile-info {
-    flex: 1; 
-    text-align: left;
-    align-items: flex-start;
-  }
-}
-
-.about {
-  word-wrap: break-word;
-  overflow-wrap: break-word;
-  max-width: 100%;
-  text-align: justify;
-}
-
-.profile-header {
+body {
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: linear-gradient(135deg, var(--primary-bg) 0%, #1a3a6b 100%);
+  min-height: 100vh;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
+  padding: var(--spacing-sm);
+  line-height: 1.6;
+  color: var(--text-dark);
 }
 
-/* .hobbies {
-  text-align: center;
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  color: var(--text-dark);
+  letter-spacing: -0.02em;
+  line-height: 1.2;
 }
 
-.dislikes {
-  text-align: center;
-} */
+/* ===========================
+   NAVIGATION
+   =========================== */
+.navbar {
+  position: fixed;
+  top: var(--spacing-sm);
+  left: var(--spacing-sm);
+  z-index: 1000;
+}
 
+.menu-icon {
+  font-size: 28px;
+  color: white;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.menu-icon:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.05);
+}
+
+.menu {
+  position: absolute;
+  top: 58px;
+  left: 0;
+  list-style: none;
+  background: rgba(34, 34, 34, 0.95);
+  backdrop-filter: blur(20px);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-xs);
+  margin: 0;
+  width: 180px;
+  display: none;
+  flex-direction: column;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+}
+
+.menu.show {
+  display: flex;
+  animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.menu li {
+  padding: 0;
+  margin: 2px 0;
+}
+
+.menu a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  display: block;
+  padding: 12px 16px;
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
+  font-size: 0.95rem;
+}
+
+.menu a:hover {
+  background: var(--accent-color);
+  transform: translateX(4px);
+}
+
+.menu a:focus {
+  outline: 2px solid #ffce00;
+  outline-offset: 2px;
+}
+
+/* ===========================
+   PROFILE CARD
+   =========================== */
+.profile-card {
+  background: var(--card-bg);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  box-shadow: var(--shadow-lg);
+  max-width: 900px;
+  width: 100%;
+  margin: var(--spacing-xl) auto;
+  animation: fadeInUp 0.5s ease;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Avatar Section */
+.profile-card figure {
+  text-align: center;
+  margin-bottom: var(--spacing-md);
+}
+
+.avatar {
+  width: 140px;
+  height: 140px;
+  border-radius: var(--radius-full);
+  object-fit: cover;
+  border: 4px solid white;
+  box-shadow: var(--shadow-md);
+  transition: all var(--transition-normal);
+}
+
+.avatar:hover {
+  transform: scale(1.08) rotate(2deg);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Profile Info */
 .profile-info {
-  max-width: 450px;
+  max-width: 100%;
 }
 
-.profile-card h2 {
-  margin: 0.5rem 0;
-  font-size: 1.6rem;
-  font-weight: 700;
+.profile-info h2 {
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  margin-bottom: var(--spacing-sm);
+  text-align: center;
+  color: var(--primary-bg);
 }
 
+/* About Section */
 .about {
-  margin: 1rem 0;
+  margin: var(--spacing-md) 0;
 }
 
 .about p {
-  margin: 0 auto;
-  color: #444;
-  line-height: 1.5;
+  color: var(--text-medium);
+  line-height: 1.7;
+  text-align: left;
 }
 
-#time {
-  font-weight: 500;
-  color: #333;
-  margin-bottom: 1rem;
+/* Section Divider */
+.section-divider {
+  border: none;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--card-border), transparent);
+  margin: var(--spacing-md) 0;
 }
+
+/* Time Display */
+.time {
+  text-align: center;
+  margin: var(--spacing-md) 0;
+}
+
+.time p {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--accent-color);
+  background: rgba(0, 120, 255, 0.1);
+  padding: var(--spacing-sm);
+  border-radius: var(--radius-sm);
+  display: inline-block;
+}
+
+/* Hobbies and Dislikes Lists */
+.lists {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-md);
+  margin: var(--spacing-md) 0;
+}
+
+.hobbies, .dislikes {
+  background: white;
+  border-radius: var(--radius-md);
+  padding: var(--spacing-md);
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-normal);
+  border: 1px solid var(--card-border);
+}
+
+.hobbies:hover, .dislikes:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.hobbies h4, .dislikes h4 {
+  color: var(--primary-bg);
+  font-size: 1.1rem;
+  margin-bottom: var(--spacing-sm);
+  text-align: center;
+}
+
+.hobbies ul, .dislikes ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.hobbies ul li, .dislikes ul li {
+  color: var(--text-medium);
+  padding: var(--spacing-xs) 0;
+  position: relative;
+  padding-left: 24px;
+}
+
+.hobbies ul li::before, .dislikes ul li::before {
+  content: "•";
+  position: absolute;
+  left: 8px;
+  color: var(--accent-color);
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+/* Social Links Dropdown */
 .dropdown {
+  margin: var(--spacing-md) 0;
+  text-align: center;
   position: relative;
   display: inline-block;
-  margin: 1rem 0;
 }
 
 .dropbtn {
-  background-color: black;
+  background: var(--primary-bg);
   color: white;
-  padding: 10px 18px;
+  padding: 12px 24px;
   border: none;
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   cursor: pointer;
-  font-weight: 6;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all var(--transition-fast);
+  box-shadow: var(--shadow-sm);
 }
-
-.dropdown:focus-within .dropdown-content {
-  display: block;
-}
-
 
 .dropbtn:hover {
-  background-color: grey;
+  background: var(--hover-color);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.dropbtn:active {
+  transform: translateY(0);
 }
 
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: #fff;
-  min-width: 180px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  border-radius: 8px;
+  background: white;
+  min-width: 200px;
+  box-shadow: var(--shadow-lg);
+  border-radius: var(--radius-md);
   z-index: 10;
-  top: 110%; 
+  top: calc(100% + 4px);
   left: 50%;
   transform: translateX(-50%);
   overflow: hidden;
+  border: 1px solid var(--card-border);
+}
+
+.dropdown:hover .dropdown-content,
+.dropdown:focus-within .dropdown-content {
+  display: block;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 .dropdown-content a {
-  color: #333;
-  padding: 10px 14px;
+  color: var(--text-dark);
+  padding: 14px 18px;
   text-decoration: none;
-  display: block;
-  transition: background-color 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: all var(--transition-fast);
+  font-weight: 500;
 }
 
 .dropdown-content a:hover {
-  background-color: #f1f1f1;
+  background: rgba(0, 120, 255, 0.1);
+  color: var(--accent-color);
 }
 
-.dropdown:hover .dropdown-content {
-  display: block;
-}
-
-
-.dropdown-content.show {
-  display: block;
-}
-
-.card, .about {
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.lists {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1.5rem;
-  margin-top: 1.5rem;
-  width: 100%;
-}
-
-.hobbies, .dislikes {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  background: rgb(234, 231, 231), 219, 219;
-  border-radius: 10px;
-  padding: 0.2rem;
-  border: 1px solid #ccc;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.hobbies:hover, .dislikes:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
-}
-
-.hobbies h4, .dislikes h4 {
-  margin-bottom: 0.5rem;
-  color: #0c204f;
-  text-align: center;
+.dropdown-content a i {
   font-size: 1.1rem;
+  width: 20px;
 }
 
-.hobbies ul, .dislikes ul {
-  list-style-type: disc;
-  /* margin-left: 0.5rem; */
-  color: #333;
-  line-height: 1.4;
+/* ===========================
+   ABOUT PAGE SPECIFIC
+   =========================== */
+main[data-testid="test-about-page"] section {
+  margin: var(--spacing-lg) 0;
+}
+
+main[data-testid="test-about-page"] h3 {
+  font-size: 1.4rem;
+  color: var(--primary-bg);
+  margin-bottom: var(--spacing-sm);
+  border-bottom: 3px solid var(--accent-color);
+  padding-bottom: var(--spacing-xs);
+  display: inline-block;
+}
+
+main[data-testid="test-about-page"] p {
+  color: var(--text-medium);
+  line-height: 1.8;
   text-align: left;
 }
 
-nav {
+main[data-testid="test-about-page"] ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+main[data-testid="test-about-page"] ul li {
+  padding: var(--spacing-xs) 0 var(--spacing-xs) 28px;
+  position: relative;
+  color: var(--text-medium);
+}
+
+main[data-testid="test-about-page"] ul li::before {
+  content: "→";
   position: absolute;
-  top: 1rem;
-  left: 1rem;
-}
-nav a {
-  color: white;
-  text-decoration: none;
-  margin-right: 1rem;
-  font-weight: 500;
+  left: 8px;
+  color: var(--accent-color);
+  font-weight: bold;
 }
 
-/* When menu is active */
-.menu.show {
-  display: flex;
+/* ===========================
+   CONTACT FORM
+   =========================== */
+#contactForm {
+  width: calc(100% - 2rem);
+  margin: 0 auto;
 }
 
-/* Menu links */
-.menu li {
-  text-align: left;
-  padding: 8px 15px;
-}
-
-.menu a {
-  color: white;
-  text-decoration: none;
+#contactForm label {
   display: block;
+  font-weight: 600;
+  margin-bottom: var(--spacing-xs);
+  color: var(--text-dark);
+  font-size: 0.95rem;
 }
 
-.menu a {
-  color: white;
-  text-decoration: none;
-  padding: 5px 8px;
-  border: 2px solid transparent; 
-  border-radius: 5px;
-  display: inline-block; 
+#contactForm input,
+#contactForm textarea {
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid var(--card-border);
+  border-radius: var(--radius-sm);
+  font-size: 1rem;
+  font-family: inherit;
+  transition: all var(--transition-fast);
+  background: white;
+  margin-bottom: 0.25rem;
 }
 
-.menu a:hover {
-  color: lightblue;
-  border-color: lightblue;
-}
-
-.menu a:focus {
+#contactForm input:focus,
+#contactForm textarea:focus {
   outline: none;
-  border-color: #ffce00; 
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 3px rgba(0, 120, 255, 0.1);
 }
 
-/* Navbar container */
-.navbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  background: transparent;
-  padding: 10px 15px;
-  z-index: 1000;
+#contactForm textarea {
+  min-height: 150px;
+  resize: vertical;
 }
 
-/* Hamburger icon */
-.menu-icon {
-  font-size: 28px;
-  color: white;
-  cursor: pointer;
-}
-
-/* Dropdown menu */
-.menu {
-  position: absolute;
-  top: 45px;
-  left: 10px;
-  list-style: none;
-  background: #222;
-  border-radius: 6px;
-  padding: 10px 0;
-  margin: 0;
-  width: 160px;
-  display: none;
-  flex-direction: column;
-}
-
-/* When menu is active */
-.menu.show {
-  display: flex;
-}
-
-/* Menu items */
-.menu li {
-  padding: 1px 2px;
-}
-
-.menu li:hover {
-  background:#0c204f;
-}
-
-.menu a {
-  color: white;
-  text-decoration: none;
+#contactForm span[id^='error-'] {
+  display: block;
+  color: var(--error-color);
+  font-size: 0.875rem;
+  margin-bottom: var(--spacing-sm);
   font-weight: 500;
+  min-height: 20px;
 }
 
-.menu a:hover {
-  color: #ffce00;
+#contactForm .section-divider {
+  margin: var(--spacing-sm) 0;
 }
-/* Hides menu by default */
-.menu {
-  display: none;
-  list-style: none;
-  flex-direction: column;
-  background: #0c204f;
-  position: absolute;
-  top: 50px;
-  left: 0;
+
+#contactForm button[type="submit"] {
+  background: var(--primary-bg);
+  color: white;
+  padding: 14px 32px;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  margin-top: var(--spacing-sm);
+  box-shadow: var(--shadow-sm);
   width: 100%;
 }
 
-/* Show menu when active */
-.menu.show {
-  display: flex;
+#contactForm button[type="submit"]:hover {
+  background: var(--hover-color);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
 }
 
-.menu a {
-  color: white;
-  text-decoration: none;
-  padding: 7px;
+#contactForm button[type="submit"]:active {
+  transform: translateY(0);
 }
-.menu a:hover {
-  color: lightblue;
+
+#success {
+  background: rgba(40, 167, 69, 0.1);
+  color: var(--success-color);
+  padding: var(--spacing-sm);
+  border-radius: var(--radius-sm);
+  text-align: center;
+  font-weight: 600;
+  margin-top: var(--spacing-md);
+  border: 1px solid var(--success-color);
+}
+
+/* Contact page profile card should take full width */
+body:has(#contactForm) .profile-card {
+  max-width: 600px;
+}
+
+/* ===========================
+   UTILITY CLASSES
+   =========================== */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ===========================
+   RESPONSIVE DESIGN
+   =========================== */
+
+/* Small devices (landscape phones) */
+@media (min-width: 576px) {
+  .profile-card {
+    padding: var(--spacing-xl);
+  }
+  
+  .lists {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Medium devices (tablets) */
+@media (min-width: 768px) {
+  body {
+    padding: var(--spacing-lg);
+  }
+  
+  .profile-card {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: var(--spacing-xl);
+    align-items: start;
+  }
+  
+  .profile-card figure {
+    margin-bottom: 0;
+  }
+  
+  .avatar {
+    width: 180px;
+    height: 180px;
+  }
+  
+  .profile-info h2 {
+    text-align: left;
+  }
+  
+  .dropdown {
+    text-align: left;
+  }
+  
+  .dropdown-content {
+    left: 0;
+    transform: none;
+  }
+  
+  #contactForm button[type="submit"] {
+    width: 100%;
+  }
+}
+
+/* Large devices (desktops) */
+@media (min-width: 992px) {
+  .avatar {
+    width: 200px;
+    height: 200px;
+  }
+  
+  .profile-card {
+    max-width: 1000px;
+  }
+}
+
+/* Extra large devices */
+@media (min-width: 1200px) {
+  body {
+    padding: var(--spacing-xl);
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Force light mode - override system preferences */
+@media (prefers-color-scheme: dark) {
+  body {
+    background: linear-gradient(135deg, var(--primary-bg) 0%, #1a3a6b 100%) !important;
+  }
+  
+  .profile-card {
+    background: var(--card-bg) !important;
+    color: var(--text-dark) !important;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    color: var(--text-dark) !important;
+  }
+  
+  .about p,
+  .hobbies ul li,
+  .dislikes ul li,
+  main[data-testid="test-about-page"] p,
+  main[data-testid="test-about-page"] ul li {
+    color: var(--text-medium) !important;
+  }
+  
+  .hobbies,
+  .dislikes {
+    background: white !important;
+    border-color: var(--card-border) !important;
+  }
+  
+ #contactForm input,
+#contactForm textarea,
+#contactForm button {
+  width: 100%;              /* fill the entire white section */
+  box-sizing: border-box;   /* keeps padding inside the box */
+  display: block;           /* ensures each element is on its own line */
+  margin-top: 10px;         /* spacing between elements */
+}
+
+#contactForm {
+  width: 80%;               /* adjust this until it fits your white area nicely */
+  margin: 0 auto;           /* centers the form */
+}
+
+#contactForm button {
+  background-color: #001f54; /* your dark blue button color */
+  color: white;
   border: none;
+  padding: 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+#contactForm button:hover {
+  background-color: #003080; /* slightly lighter on hover */
+}
+#contactForm input,
+#contactForm textarea,
+#contactForm button {
+  width:100%;              /* fill the entire white section */
+  box-sizing: border-box;   /* keeps padding inside the box */
+  display: block;           /* ensures each element is on its own line */
+  margin-top: 10px;         /* spacing between elements */
+}
+
+#contactForm {
+  width: 80%;               /* adjust this until it fits your white area nicely */
+  margin: 0 auto;           /* centers the form */
+}
+
+#contactForm button {
+  background-color: #001f54; /* your dark blue button color */
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+#contactForm button:hover {
+  background-color: #003080; /* slightly lighter on hover */
+}
+
+  
+  .dropdown-content {
+    background: white !important;
+    border-color: var(--card-border) !important;
+  }
+  
+  .dropdown-content a {
+    color: var(--text-dark) !important;
+  }
 }
